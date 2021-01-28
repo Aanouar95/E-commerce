@@ -1,0 +1,26 @@
+<div class="userDetails">
+    <h2>User details</h2>
+  
+    <table>
+      <tr>
+        <td>User Id</td>
+        <td>{{user.id}}</td>
+      </tr>
+      <tr>
+        <td>User First Name</td>
+        <td>{{user.fname}}</td>
+      </tr>
+      <tr>
+        <td>User last Name</td>
+        <td>{{user.lname}}</td>
+      </tr>
+      <tr>
+        <td>User Address</td>
+        <td>{{user.address}}</td>
+      </tr>
+  
+    </table>
+    <a class="btn btn-small btn-danger btn-sm  mt-2 ml-4" (click)="deleteUser()">Delete User</a>
+
+  </div>
+

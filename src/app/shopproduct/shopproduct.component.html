@@ -1,0 +1,58 @@
+<div class="container-fluid row" >
+    <div class="col-md-2">
+        <h1>Products</h1>
+    </div>
+    <div class="col float-right" *ngIf="cartProducts.length > 0">
+        <div class="float-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <br>
+                    <a href="#" class="btn btn-info btn-lg" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="fa fa-shopping-cart">
+                            Products Added In Cart:
+                        </span>
+                        <span class="caret">{{cartProducts.length}}</span>
+                    </a>
+                    <ul class="dropdown-menu w-100 " role="menu">
+                        <h6 class="dropdown-header"><strong>Products Added</strong> </h6>
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let item of cartProducts"><small>{{item.name}}</small> 
+                                <span class="float-right">${{item.price}}</span>
+                            </li>
+                            <li class="list-group-item">Total (USD) <strong class="float-right">${{totalCart}}</strong></li>
+                            <div class="row mt-3 ml-3">
+                                <button class="btn btn-success" (click)="goToCart()"><i class="fa fa-shopping-cart" ></i> Checkout</button>
+                                <div class="col-sm"><a class="btn btn btn-warning " role="button" (click)="emptyCart()">Reset</a></div>
+                            </div>
+                            
+                          </ul>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<hr>
+<hr>
+
+
+<div class="container-fluid row ml-4" >
+    <div class="mt-5 ml-3" *ngFor="let product of products;let i=index">
+        <div class="card text-center" style="width: 15rem;height:23rem;">
+            <img src={{product.retrievedImage}} alt="" class="card-image-top" height="200" width="">
+            <div class="card-body">
+                <h5 class="card-title"><a>{{product.name}}</a>
+                    <span class="badge badge-pill  ml-1" 
+                    [ngClass]="{'badge-success' : product.quantity > 7 , 'badge-warning' : product.quantity < 7 , 'badge-danger' : product.quantity == 0 || !product.quantity }">
+                    {{product.quantity ? product.quantity : '0'}}</span>
+                </h5>
+                <p class="card-text">{{product.price}} $</p>
+                <button class="btn btn-success btn-sm justify-self-end" (click)="addToCart(product.id)">Add to Cart</button>
+            
+            </div>
+        </div>
+    </div>
+</div>
+

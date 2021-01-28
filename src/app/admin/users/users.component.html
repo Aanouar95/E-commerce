@@ -1,0 +1,33 @@
+<h1 class="m-3 ml-4">Users Admin</h1>
+<a class="btn btn-success m-3 ml-5 btn-sm active" role="button" aria-pressed="true" (click)="addUser()">add New User</a>
+<div class="container row">
+    <div   class="col-md-6">
+    <table class="table ml-2">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Adress</th>
+        <th>Birthdate</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users" >
+        <td>{{user.id}}</td>
+        <td>{{user.fname}}</td>
+        <td>{{user.lname}}</td>
+        <td>{{user.address}}</td>
+        <td class="w-25">{{user.birthDate}}</td>
+        <td class="w-25"><button type="button" class="btn btn-primary btn-sm" (click)="viewUser(user.id)">Show Details</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div   class="col-md-6">
+    <app-adduser *ngIf="action === 'add'" [user]="selectedUser" (userAddedEvent)="refreshData()"></app-adduser>
+    <app-viewuser *ngIf="action === 'view'" [user]="selectedUser" (userDeletedEvent)="refreshData()"></app-viewuser>
+
+  </div>
+</div>

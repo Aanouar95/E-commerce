@@ -1,0 +1,17 @@
+<h1>Add User</h1>
+<form #recievedUser="ngForm" novalidate>
+
+  <label for="lname">lName</label>
+  <input type="text" class="form-control" id="lname" placeholder="user Last Name" [(ngModel)]="user.lname" name="lname" required>
+
+  <label for="fname">fName</label>
+  <input type="text" class="form-control" id="fname" placeholder="user First Name" [(ngModel)]="user.fname" name="fname" required>
+
+  <label for="address">Address</label>
+  <input type="text" class="form-control" id="address" placeholder="Address" [(ngModel)]="user.address" name="address" required>
+
+
+   <br>
+  <button type="button" class="btn btn-success" (click)="addUser()" [disabled]="!recievedUser.valid">Save</button>
+
+</form>

@@ -1,0 +1,21 @@
+<h1>{{product.id == null ? 'Add' : 'Edit'}} Product - {{product.id}}</h1>
+<form #recievedUser="ngForm" novalidate>
+
+  <label for="name">Name</label>
+  <input type="text" class="form-control" id="name" placeholder="product name" [(ngModel)]="product.name" name="name" required>
+
+  <label for="quantity">quantity</label>
+  <input type="text" class="form-control" id="quantity" placeholder="quantity" [(ngModel)]="product.quantity" name="quantity" required>
+
+  <label for="price">price</label>
+  <input type="text" class="form-control" id="price" placeholder=" product price" [(ngModel)]="product.price" name="price" required>
+   <br>
+   <div class="form-group" *ngIf="product.id == null">
+   <input type="file"  (change)="onFileChanged($event)"  name="img" [(ngModel)]="img" required >
+    <img [src]="imgURL" height="200" width="200" *ngIf="imgURL" >
+    <br>
+    </div>
+  <button type="button" class="btn btn-success m-3" (click)="saveProduct()" [disabled]="!recievedUser.valid">Save Product</button>
+  <input class="btn btn-warning" type="reset" value="Reset" >
+
+</form>

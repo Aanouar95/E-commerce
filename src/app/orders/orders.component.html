@@ -1,0 +1,26 @@
+<h1 class="m-3 ml-4">Orders </h1>
+<div class="container row">
+    <div   class="col-md-6">
+    <table class="table ml-2">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Order Date</th>
+        <th>Total </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders" >
+        <td>{{order.id}}</td>
+        <td>{{order.order_date}}</td>
+        <td>${{order.total}}</td>
+        <td class="w-25"><button type="button" class="btn btn-primary btn-sm" (click)="viewOrder(order.id)">Show Details</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div   class="col-md-6">
+    <app-vieworder *ngIf="action === 'view'" [order]="selectedOrder"></app-vieworder>
+
+  </div>
+</div>
